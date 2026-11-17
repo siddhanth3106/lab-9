@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Directory | XML Data Viewer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <!-- Header Section -->
+    <header class="page-header">
+        <span class="badge-lab">Web Technology &bull; Lab 9</span>
+        <h1>Employee Information Directory</h1>
+        <p>Reads and parses structured XML data dynamically into an interactive tabular view</p>
+    </header>
+
+    <!-- KPI Metric Cards -->
+    <section class="stats-grid">
+        <div class="stat-card">
+            <div class="label">Total Employees</div>
+            <div class="value" id="statTotalEmployees">0</div>
+        </div>
+        <div class="stat-card">
+            <div class="label">Average Salary</div>
+            <div class="value" id="statAvgSalary">$0</div>
+        </div>
+        <div class="stat-card">
+            <div class="label">Highest Salary</div>
+            <div class="value" id="statMaxSalary">$0</div>
+        </div>
+        <div class="stat-card">
+            <div class="label">Departments</div>
+            <div class="value" id="statTotalDepts">0</div>
+        </div>
+    </section>
+
+    <!-- Notice/Alert Box -->
+    <div id="noticeMessage" class="notice"></div>
+
+    <!-- Controls Panel -->
+    <section class="panel">
+        <div class="actions-bar">
+            <div class="button-group">
+                <button id="btnLoadDefault" class="btn btn-primary">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/>
+                    </svg>
+                    Load Default XML
+                </button>
+
+                <div class="file-input-wrapper">
+                    <button class="btn btn-secondary">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="17 8 12 3 7 8"/>
+                            <line x1="12" y1="3" x2="12" y2="15"/>
+                        </svg>
+                        Upload Custom XML
+                    </button>
+                    <input type="file" id="xmlFileInput" accept=".xml,text/xml" title="Upload an XML file">
+                </div>
+
+                <button id="btnExportCsv" class="btn btn-secondary">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                        <polyline points="7 10 12 15 17 10"/>
+                        <line x1="12" y1="15" x2="12" y2="3"/>
+                    </svg>
+                    Export CSV
+                </button>
+            </div>
+        </div>
+
+        <!-- Filter & Search Controls -->
+        <div class="filter-bar">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="searchInput" placeholder="Search by name, ID, role, department or email...">
+            </div>
+
+            <div class="select-filter">
+                <select id="deptFilter">
+                    <option value="">All Departments</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tabular Data Display -->
+    <section class="table-wrapper">
+        <div class="table-header-info">
+            <h2 class="table-title">Employee Records</h2>
+            <span id="recordCount" class="record-count">0 Records</span>
+        </div>
+
+        <div class="table-responsive">
+            <table id="employeeTable">
+                <thead>
+                    <tr>
+                        <th data-sort="id">ID <span class="sort-icon">↕</span></th>
+                        <th data-sort="name">Employee Name <span class="sort-icon">↕</span></th>
+                        <th data-sort="department">Department <span class="sort-icon">↕</span></th>
+                        <th data-sort="designation">Designation <span class="sort-icon">↕</span></th>
+                        <th data-sort="salary">Salary <span class="sort-icon">↕</span></th>
+                        <th data-sort="email">Email <span class="sort-icon">↕</span></th>
+                        <th data-sort="joiningDate">Joining Date <span class="sort-icon">↕</span></th>
+                        <th data-sort="status">Status <span class="sort-icon">↕</span></th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <!-- Populated dynamically by script.js -->
+                </tbody>
+            </table>
+
+            <div id="emptyState" class="empty-state" style="display: none;">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+                <h3>No Employee Records Found</h3>
+                <p>Try clearing your search filters or loading an XML file containing &lt;employee&gt; entries.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Raw XML Inspection Accordion -->
+    <section class="xml-viewer-section">
+        <button id="xmlToggleBtn" class="accordion-toggle" type="button">
+            <span>Inspect Raw XML Source Data</span>
+            <span class="arrow-icon">▼</span>
+        </button>
+        <div id="xmlCodeWrapper" class="xml-code-wrapper">
+            <pre><code id="rawXmlCode">&lt;!-- Raw XML will display here --&gt;</code></pre>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Lab Assignment 9 &bull; Web Technology &bull; XML DOM Parser & Tabular Data Renderer</p>
+    </footer>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

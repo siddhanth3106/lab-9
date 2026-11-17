@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<company>
+    <department_info name="Global Tech Solutions" year="2026"/>
+    <employees>
+        <employee id="EMP101">
+            <name>Aarav Sharma</name>
+            <department>Engineering</department>
+            <designation>Senior Full Stack Developer</designation>
+            <salary>95000</salary>
+            <email>aarav.sharma@example.com</email>
+            <joining_date>2021-03-15</joining_date>
+            <status>Active</status>
+        </employee>
+        <employee id="EMP102">
+            <name>Sneha Patel</name>
+            <department>Product Design</department>
+            <designation>Lead UI/UX Designer</designation>
+            <salary>88000</salary>
+            <email>sneha.patel@example.com</email>
+            <joining_date>2020-07-01</joining_date>
+            <status>Active</status>
+        </employee>
+        <employee id="EMP103">
+            <name>Rohan Verma</name>
+            <department>Engineering</department>
+            <designation>DevOps Engineer</designation>
+            <salary>91000</salary>
+            <email>rohan.verma@example.com</email>
+            <joining_date>2022-01-10</joining_date>
+            <status>Active</status>
+        </employee>
+        <employee id="EMP104">
+            <name>Priya Nair</name>
+            <department>Human Resources</department>
+            <designation>HR Operations Manager</designation>
+            <salary>76000</salary>
+            <email>priya.nair@example.com</email>
+            <joining_date>2019-11-20</joining_date>
+            <status>Active</status>
+        </employee>
+        <employee id="EMP105">
+            <name>Vikram Malhotra</name>
+            <department>Finance</department>
+            <designation>Financial Analyst</designation>
+            <salary>82000</salary>
+            <email>vikram.m@example.com</email>
+            <joining_date>2023-04-05</joining_date>
+            <status>Active</status>
+        </employee>
+        <employee id="EMP106">
+            <name>Ananya Iyer</name>
+            <department>Marketing</department>
+            <designation>Digital Marketing Lead</designation>
+            <salary>79000</salary>
+            <email>ananya.iyer@example.com</email>
+            <joining_date>2021-09-18</joining_date>
+            <status>Active</status>
+        </employee>
+        <employee id="EMP107">
+            <name>Karan Joshi</name>
+            <department>Data Science</department>
+            <designation>Machine Learning Engineer</designation>
+            <salary>105000</salary>
+            <email>karan.joshi@example.com</email>
+            <joining_date>2022-08-12</joining_date>
+            <status>Active</status>
+        </employee>
+        <employee id="EMP108">
+            <name>Meera Sen</name>
+            <department>Quality Assurance</department>
+            <designation>QA Automation Architect</designation>
+            <salary>86000</salary>
+            <email>meera.sen@example.com</email>
+            <joining_date>2020-02-28</joining_date>
+            <status>Active</status>
+        </employee>
+    </employees>
+</company>
